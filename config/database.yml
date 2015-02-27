@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: everydayrails_development
+
+test:
+  <<: *default
+  database: everydayrails_test
+
+production:
+  <<: *default
+  database: everydayrails_production
+  username: everydayrails
+  password: <%= ENV['EVERYDAYRAILS_DATABASE_PASSWORD'] %>

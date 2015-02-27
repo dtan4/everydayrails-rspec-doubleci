@@ -6,6 +6,8 @@ build:
             code: |
                 export TZ="Asia/Tokyo"
         - bundle-install
+      - rails-database-yml:
+            service: postgresql
         - script:
             name: echo ruby information
             code: |
@@ -15,8 +17,8 @@ build:
         - script:
             name: set up db
             code: |
-                bundle exec rake db:create
-                bundle exec rake db:schema:load
+                RAILS_ENV=test bundle exec rake db:create
+                RAILS_ENV=test bundle exec rake db:schema:load
         - script:
             name: rspec
             code: bundle exec rspec

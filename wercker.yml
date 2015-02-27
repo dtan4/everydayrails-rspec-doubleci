@@ -6,7 +6,7 @@ build:
             code: |
                 export TZ="Asia/Tokyo"
         - bundle-install
-      - rails-database-yml:
+        - rails-database-yml:
             service: postgresql
         - script:
             name: echo ruby information

@@ -22,8 +22,5 @@ build:
                 RAILS_ENV=test bundle exec rake db:create
                 RAILS_ENV=test bundle exec rake db:schema:load
         - script:
-            name: rspec
-            code: bundle exec rspec
-        # - script:
-        #     name: unit test
-        #     code: bundle exec rspec spec/{controllers,models}
+            name: unit test
+            code: bundle exec rspec spec/{controllers,models}

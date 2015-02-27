@@ -1,0 +1,25 @@
+box: wercker/rvm
+build:
+    steps:
+        - script:
+            name: set timezone
+            code: |
+                export TZ="Asia/Tokyo"
+        - bundle-install
+        - script:
+            name: echo ruby information
+            code: |
+                echo "ruby version $(ruby --version) running"
+                echo "from location $(which ruby)"
+                echo -p "gem list: $(gem list)"
+        - script:
+            name: set up db
+            code: |
+                bundle exec rake db:create
+                bundle exec rake db:schema:load
+        - script:
+            name: rspec
+            code: bundle exec rspec
+        # - script:
+        #     name: unit test
+        #     code: bundle exec rspec spec/{controllers,models}
